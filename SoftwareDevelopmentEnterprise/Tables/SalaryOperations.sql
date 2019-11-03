@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[SalaryOperations]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1, 1),
+	[EmployeeID] INT NOT NULL UNIQUE,
+	FOREIGN KEY (EmployeeID) REFERENCES Employees (Id),
+	[At] DATE NOT NULL,
+	[Sum] SMALLMONEY NOT NULL
+)

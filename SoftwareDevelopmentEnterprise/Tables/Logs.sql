@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Logs]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY,
+	[Date] DATETIME NOT NULL,
+	[EmployeeID] INT REFERENCES Employees(Id),
+	[Message] NVARCHAR(400)
+)
