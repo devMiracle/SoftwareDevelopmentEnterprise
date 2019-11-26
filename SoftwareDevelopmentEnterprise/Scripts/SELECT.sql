@@ -41,6 +41,42 @@ SELECT * FROM Logs WHERE EmployeeID = 1;
 
 SELECT FirstName, (SELECT [PositionName] FROM Positions WHERE Id = PositionID) AS Position FROM Employees GROUP BY PositionID, FirstName;
 
+SELECT 
+E.Id AS ИД, E.LastName AS 'ИМЯ', E.MiddleName AS 'ФАМИЛИЯ', P.PositionName AS 'ПОЗИЦИЯ', D.DepartmentName AS 'ОТДЕЛ'
+FROM Employees AS E
+JOIN Positions AS P 
+ON E.PositionID = P.Id
+JOIN Depart AS D
+ON E.DepartmentID = D.Id
 
+
+--1. Получить текущие дату-время
+--2. Получить год из переданной даты-времени
+--3. Получить месяц из переданной даты-времени
+--4. Получить дату из переданной даты-времени
+--5. Получить разницу в днях между двумя дата-время
+--6. Получить дату которая через 2 месяца после переданной даты
+--7. Получить дату которая 1 год, 2 месяца, 3 дня назад от переданной даты
+
+--1
+SELECT GETDATE() AS [DATE];
+
+--2
+SELECT (YEAR(GETDATE())) AS [YEAR];
+
+--3
+SELECT (MONTH(GETDATE())) AS [MONTH];
+
+--4
+SELECT (DAY(GETDATE())) AS [DAY];
+
+--5 
+SELECT DATEDIFF(day, '2007-04-30 13:10:02', GETDATE())  AS [DAY];
+
+--6
+SELECT DATEADD(month, 2, GETDATE()) AS [MONTH];
+
+--7
+SELECT DATEFROMPARTS((YEAR(GETDATE()) - 1), (MONTH(GETDATE()) -2), (DAY(GETDATE()) - 3)) AS [DATETIME];
 
 
